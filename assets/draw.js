@@ -26,17 +26,6 @@ function drawBlueCaveRoom(context, x, y, name) {
 	lastY = y;
 	lastNodeName = name;
 }
-function drawPath(context, posY, posX, destX, destY) {
-	context.save();
-	context.beginPath();
-	context.moveTo(posY, posX);
-	context.lineTo(destX, destY);
-	context.strokeStyle = "blue";
-	context.stroke();
-	context.restore();
-
-}
-
 function drawGreenCaveroom(context, x, y, name) {
 	context.save();
 	context.beginPath();
@@ -49,8 +38,17 @@ function drawGreenCaveroom(context, x, y, name) {
 	context.fill();
 	context.restore();
 }
+function drawPath(context, posY, posX, destX, destY) {
+	context.save();
+	context.beginPath();
+	context.moveTo(posY, posX);
+	context.lineTo(destX, destY);
+	context.strokeStyle = "blue";
+	context.stroke();
+	context.restore();
 
-function canvas_arrow(context, fromx, fromy, tox, toy) {
+}
+function direction(context, fromx, fromy, tox, toy) {
   var headlen = 10; // length of head in pixels
   var dx = tox - fromx;
   var dy = toy - fromy;
