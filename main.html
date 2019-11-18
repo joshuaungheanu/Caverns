@@ -6,19 +6,21 @@
 	<link rel="stylesheet" href="assets/style.css"/>
 	<script src="assets/graphCanvas.js"></script>
 	<script src="assets/draw.js"></script>
-
+	
 	<h1>Asgwilanga Caverns</h1>
 </head>
+
 <body>
 	<canvas id="centerRoom" width="350" height="200"></canvas>
 	<canvas id="grid" width="850" height="850"></canvas>
 </body>
+
 <script>
 	var can = document.getElementById("centerRoom");
 	var src = can.getContext("2d");
 	src.font = "12px Helvetica";
 	src.fillText("Most Recent Centered Room:", 10, 50);
-	var LowestResidue = 10000;
+	var FindLowestResidue = 10000;
 	var LowestResidueCaveName;
 	var LowestX;
 	var LowestY;
@@ -26,7 +28,7 @@
 	var canvas = document.getElementById( "grid" );
 	var context = canvas.getContext( "2d" );
 
-	// Generates a room with id
+	// Generates a room with proper id
 	var myGraph = new Graph(30);
 	var room1 = new Node(1, 8, 7, 710,25);
 	var room2 = new Node(2, 8, 6, 117,25);
@@ -51,7 +53,7 @@
 	var room21 = new Node(3, 6, 7, 692, 167);
 	var room22 = new Node(2, 7, 7, 527, 167);
 	var room23 = new Node(10, 0, 6, 363, 167);
-	var room24 = new Node(4, 8, 5, 200, 167);
+	var room24 = new Node(3, 8, 5, 200, 167);
 	var room25 = new Node(15, 1, 0, 35, 120);
 	var room26 = new Node(7,2,7, 35, 200);
 	var room27 = new Node(8, 8, 0, 609, 35);
@@ -108,12 +110,12 @@
 		}
 		adjacencies = myGraph.grabEdges(currentNode);
 		currentNode.visited = true;
-		drawRedRoom(context, currentNode.posX, currentNode.posY, currentNode.name);
+		drawRedCaveroom(context, currentNode.posX, currentNode.posY, currentNode.name);
 		for (i of adjacencies) {
 			if(i.visited == false) {
 				if(i.first == currentNode.first) {
 					if (i.second == 8 || i.second == 0 || i.third == 7 || i.third == 0) {
-						drawBlueRoom(context, i.posX, i.posY, i.name);
+						drawBlueCaveRoom(context, i.posX, i.posY, i.name);
 						drawPath(context, currentNode.posX, currentNode.posY, i.posX, i.posY);
 						isNodeCentered(src, i);
 						setTimeout(graphAlgorithm, 500, i);
@@ -122,7 +124,7 @@
 				}
 				else if (i.second == currentNode.second) {
 					if (i.first == 16 || i.first == 0 || i.third == 7 || i.third == 0) {
-						drawBlueRoom(context, i.posX, i.posY, i.name);
+						drawBlueCaveRoom(context, i.posX, i.posY, i.name);
 						drawPath(context, currentNode.posX, currentNode.posY, i.posX, i.posY);
 						isNodeCentered(src, i);
 						setTimeout(graphAlgorithm, 500, i);
@@ -131,7 +133,7 @@
 				}
 				else if (i.third == currentNode.third) {
 					if (i.first == 16 || i.first == 0 || i.second == 8 || i.second == 0) {
-						drawBlueRoom(context, i.posX, i.posY, i.name);
+						drawBlueCaveRoom(context, i.posX, i.posY, i.name);
 						drawPath(context, currentNode.posX, currentNode.posY, i.posX, i.posY);
 						isNodeCentered(src, i);
 						setTimeout(graphAlgorithm, 500, i);
@@ -140,9 +142,9 @@
 				}
 			}
 		}
-		drawRedRoom(context, lastX, lastY, lastNodeName);
+		drawRedCaveroom(context, lastX, lastY, lastNodeName);
 		previousNode = stack.peek();
-		drawBlueRoom(context, previousNode.posX, previousNode.posY, previousNode.name);
+		drawBlueCaveRoom(context, previousNode.posX, previousNode.posY, previousNode.name);
 		stack.pop();
 		if (stack.isEmpty()) {
 			print(src, context);

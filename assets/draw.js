@@ -1,6 +1,6 @@
 // Javascript that prints out the type of room
 
-function drawRedRoom(context, x, y, name) {
+function drawRedCaveroom(context, x, y, name) {
 	context.save();
 	context.beginPath();
 	context.arc(x, y, 25, 0, 2*Math.PI, false);
@@ -11,7 +11,7 @@ function drawRedRoom(context, x, y, name) {
 	context.fillText(name, x-10, y+5);
 	context.fill();
 }
-function drawBlueRoom(context, x, y, name) {
+function drawBlueCaveRoom(context, x, y, name) {
 	context.save();
 	context.beginPath();
 	context.arc(x, y, 25, 0, 2*Math.PI, false);
@@ -37,7 +37,7 @@ function drawPath(context, posY, posX, destX, destY) {
 
 }
 
-function drawYellowRoom(context, x, y, name) {
+function drawGreenCaveroom(context, x, y, name) {
 	context.save();
 	context.beginPath();
 	context.arc(x, y, 25, 0, 2*Math.PI, false);

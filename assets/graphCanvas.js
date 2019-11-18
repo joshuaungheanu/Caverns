@@ -2,10 +2,10 @@
 
 // Check each node and define the most recent center node
 function isNodeCentered(src, node){
-	if(node.residue < LowestResidue){
+	if(node.residue < FindLowestResidue){
 		LowestX = node.posX;
 		LowestY = node.posY;
-		LowestResidue = node.residue;
+		FindLowestResidue = node.residue;
 		LowestResidueCaveName = node.name
 		src.clearRect(0, 0, can.width, can.height);
 		src.font = "Bold 12px Helvetica";
@@ -13,7 +13,7 @@ function isNodeCentered(src, node){
 		src.fillText("----------------------------------------------", 10, 50);
 		src.fillText("Most Recent Centered Room:", 10, 60);
 		src.fillText("Cave Room Number: " + LowestResidueCaveName, 10, 70);
-		src.fillText("Residue: " + LowestResidue, 10, 85);
+		src.fillText("Residue: " + FindLowestResidue, 10, 85);
 	}
 }
 
@@ -25,9 +25,9 @@ function print(src, context){
 	src.fillText("----------------------------------------------", 10, 50);
 	src.fillText("Most Recent Centered Room:", 10, 60);
 	src.fillText("Cave Room Number: " + LowestResidueCaveName, 10, 70);
-	src.fillText("Residue: " + LowestResidue, 10, 85);
+	src.fillText("Residue: " + FindLowestResidue, 10, 85);
 	src.fillText("Complete", 10, 100);
-	drawYellowRoom(context, LowestX, LowestY, LowestResidueCaveName);
+	drawGreenCaveroom(context, LowestX, LowestY, LowestResidueCaveName);
 
 }
 
