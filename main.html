@@ -4,19 +4,15 @@
 	<meta charset="utf-8" />
 	<title>Asgwilanga Caverns</title>
 	<link rel="stylesheet" href="assets/style.css"/>
-	<style>
+	<script src="assets/graphCanvas.js"></script>
+	<script src="assets/draw.js"></script>
 
-	</style>
 	<h1>Asgwilanga Caverns</h1>
 </head>
-
 <body>
 	<canvas id="centerRoom" width="350" height="200"></canvas>
 	<canvas id="grid" width="850" height="850"></canvas>
 </body>
-
-<script src="assets/graphCanvas.js"></script>
-<script src="assets/draw.js"></script>
 <script>
 	var can = document.getElementById("centerRoom");
 	var src = can.getContext("2d");
@@ -30,70 +26,70 @@
 	var canvas = document.getElementById( "grid" );
 	var context = canvas.getContext( "2d" );
 
-	// Creates Caverooms with ID (First 3 parameters) and Position on on Canvas (Last 2 Parameters)
+	// Generates a room with id
 	var myGraph = new Graph(30);
-	var caveroom1 = new Node(1, 8, 7, 710,25);
-	var caveroom2 = new Node(2, 8, 6, 117,25);
-	var caveroom3 = new Node(10, 6, 0, 695, 695);
-	var caveroom4 = new Node(7, 8, 1, 527, 695);
-	var caveroom5 = new Node(14, 2, 0, 363, 695);
-	var caveroom6 = new Node(4, 5, 7, 200, 695);
-	var caveroom7 = new Node(12, 4, 0, 35, 695);
-	var caveroom8 = new Node(5, 4, 7, 609, 563);
-	var caveroom9 = new Node(8, 1, 7, 445, 563);
-	var caveroom10 = new Node(11, 0, 5, 281, 563);
-	var caveroom11 = new Node(6, 3, 7, 117, 563);
-	var caveroom12 = new Node(13, 3, 0, 695, 431);
-	var caveroom13 = new Node(15, 0, 1, 527, 431);
-	var caveroom14 = new Node(9, 7, 0, 363, 431);
-	var caveroom15 = new Node(6, 8, 2, 200, 431);
-	var caveroom16 = new Node(14, 0, 2, 35, 431);
-	var caveroom17 = new Node(9, 0, 7, 609, 299);
-	var caveroom18 = new Node(12, 0, 4, 445, 299);
-	var caveroom19 = new Node(5, 8, 3, 281, 299);
-	var caveroom20 = new Node(13, 0, 3, 117, 299);
-	var caveroom21 = new Node(3, 6, 7, 692, 167);
-	var caveroom22 = new Node(2, 7, 7, 527, 167);
-	var caveroom23 = new Node(10, 0, 6, 363, 167);
-	var caveroom24 = new Node(3, 8, 5, 200, 167);
-	var caveroom25 = new Node(15, 1, 0, 35, 120);
-	var caveroom26 = new Node(7,2,7, 35, 200);
-	var caveroom27 = new Node(8, 8, 0, 609, 35);
-	var caveroom28 = new Node(11, 5, 0, 445, 35);
-	var caveroom29 = new Node(4, 8, 4, 281, 35);
-	var caveroom30 = new Node(16,0,0, 35, 35);
+	var room1 = new Node(1, 8, 7, 710,25);
+	var room2 = new Node(2, 8, 6, 117,25);
+	var room3 = new Node(10, 6, 0, 695, 695);
+	var room4 = new Node(7, 8, 1, 527, 695);
+	var room5 = new Node(14, 2, 0, 363, 695);
+	var room6 = new Node(4, 5, 7, 200, 695);
+	var room7 = new Node(12, 4, 0, 35, 695);
+	var room8 = new Node(5, 4, 7, 609, 563);
+	var room9 = new Node(8, 1, 7, 445, 563);
+	var room10 = new Node(11, 0, 5, 281, 563);
+	var room11 = new Node(6, 3, 7, 117, 563);
+	var room12 = new Node(13, 3, 0, 695, 431);
+	var room13 = new Node(15, 0, 1, 527, 431);
+	var room14 = new Node(9, 7, 0, 363, 431);
+	var room15 = new Node(6, 8, 2, 200, 431);
+	var room16 = new Node(14, 0, 2, 35, 431);
+	var room17 = new Node(9, 0, 7, 609, 299);
+	var room18 = new Node(12, 0, 4, 445, 299);
+	var room19 = new Node(5, 8, 3, 281, 299);
+	var room20 = new Node(13, 0, 3, 117, 299);
+	var room21 = new Node(3, 6, 7, 692, 167);
+	var room22 = new Node(2, 7, 7, 527, 167);
+	var room23 = new Node(10, 0, 6, 363, 167);
+	var room24 = new Node(4, 8, 5, 200, 167);
+	var room25 = new Node(15, 1, 0, 35, 120);
+	var room26 = new Node(7,2,7, 35, 200);
+	var room27 = new Node(8, 8, 0, 609, 35);
+	var room28 = new Node(11, 5, 0, 445, 35);
+	var room29 = new Node(4, 8, 4, 281, 35);
+	var room30 = new Node(16,0,0, 35, 35);
 
 	// Define the arrays for each cave room
-	var listCaverooms = [caveroom1,
-						caveroom2,
-						caveroom3,
-						caveroom4,
-						caveroom5,
-						caveroom6,
-						caveroom7,
-						caveroom8,
-						caveroom9,
-						caveroom10,
-						caveroom11,
-						caveroom12,
-						caveroom13,
-						caveroom14,
-						caveroom15,
-						caveroom16,
-						caveroom17,
-						caveroom18,
-						caveroom19,
-						caveroom20,
-						caveroom21,
-						caveroom22,
-						caveroom23,
-						caveroom24,
-						caveroom25,
-						caveroom26,
-						caveroom27,
-						caveroom28,
-						caveroom29,
-						caveroom30];
+	var listCaverooms = [room1,
+						room2,
+						room3,
+						room4,
+						room5,
+						room6,
+						room7,
+						room8,
+						room9,
+						room10,
+						room11,
+						room12,
+						room13,
+						room14,
+						room15,
+						room16,
+						room17,
+						room18,
+						room19,
+						room20,
+						room21,
+						room22,
+						room23,
+						room24,
+						room25,
+						room26,
+						room27,
+						room28,
+						room29,
+						room30];
 
 	for (i of listCaverooms) {
 		myGraph.addVertex(i);
