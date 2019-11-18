@@ -1,5 +1,3 @@
-
-
 // Check each node and define the most recent center node
 function isNodeCentered(src, node){
 	if(node.residue < FindLowestResidue){
@@ -8,31 +6,32 @@ function isNodeCentered(src, node){
 		FindLowestResidue = node.residue;
 		LowestResidueCaveName = node.name
 		src.clearRect(0, 0, can.width, can.height);
-		src.font = "Bold 12px Helvetica";
-		src.fillText("Bot Tavel Information:", 10, 40);
+		src.font = "16px Helvetica";
+		src.fillStyle = "white";
+		src.fillText("Bot Tavel Information:", 50, 35);
 		src.fillText("----------------------------------------------", 10, 50);
-		src.fillText("Most Recent Centered Room:", 10, 60);
-		src.fillText("Cave Room Number: " + LowestResidueCaveName, 10, 70);
-		src.fillText("Residue: " + FindLowestResidue, 10, 85);
+		src.fillText("Most Recent Centered Room:", 20, 65);
+		src.fillText("Cave Room Number: " + LowestResidueCaveName, 20, 85);
+		src.fillText("Residue: " + FindLowestResidue, 20, 105);
 	}
 }
 
 // Print nodes info
 function print(src, context){
 	src.clearRect(0, 0, can.width, can.height);
-	src.font = "Bold 12px Helvetica";
-	src.fillText("Bot Tavel Information:", 10, 40);
+	src.font = "16px Helvetica";
+	src.fillStyle = "white";
+	src.fillText("Bot Tavel Information:", 50, 35);
 	src.fillText("----------------------------------------------", 10, 50);
-	src.fillText("Most Recent Centered Room:", 10, 60);
-	src.fillText("Cave Room Number: " + LowestResidueCaveName, 10, 70);
-	src.fillText("Residue: " + FindLowestResidue, 10, 85);
-	src.fillText("Complete", 10, 100);
+	src.fillText("Most Recent Centered Room:", 20, 65);
+	src.fillText("Cave Room Number: " + LowestResidueCaveName, 20, 85);
+	src.fillText("Residue: " + FindLowestResidue, 20, 105);
+	src.fillText("Complete", 20, 125);
 	drawGreenCaveroom(context, LowestX, LowestY, LowestResidueCaveName);
 
 }
 
 // Function that generates the edges for the graph
-
 function Graph(numOfVertices) {
 		var numOfVertices;
 		var adjList;
@@ -65,6 +64,7 @@ function Graph(numOfVertices) {
 		}
 	}
 
+	// Stack nodes so we can traverse afterwards
 	function Stack() {
 		var items;
 		this.items = [];
