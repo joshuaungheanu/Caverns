@@ -26,7 +26,7 @@
 	var context = canvas.getContext( "2d" );
 
 	// Generates a room with proper id
-	var myGraph = new Graph(30);
+	var myGraph = new Graph(32);
 	var room1 = new Node(2, 8, 6, 710,25);
     var room2 = new Node(1, 8, 7, 120,25);
     var room3 = new Node(10, 6, 0, 695, 725);
@@ -56,7 +56,10 @@
 	var room27 = new Node(8, 8, 0, 600, 50);
 	var room28 = new Node(11, 5, 0, 445, 50);
 	var room29 = new Node(4, 8, 4, 275, 50);
-	var room30 = new Node(16,0,0, 35, 50);
+	var room30 = new Node(8,4,2, 225, 50);
+	var room31 = new Node(0,0,16, 335, 50);
+	var room32 = new Node(16,0,0, 35, 50);
+
 
 	// Define the arrays for each cave room
 	var listCaverooms = [room1,
@@ -88,14 +91,17 @@
 						room27,
 						room28,
 						room29,
-						room30];
+						room30,
+						room31,
+						room32
+					];
 
 	for (i of listCaverooms) {
 		myGraph.addVertex(i);
 		console.log(i);
 		myGraph.addEdge(i, listCaverooms);
 	}
-	var startingRoom = listCaverooms[29];
+	var startingRoom = listCaverooms[31];
 	var stack = new Stack();
 	var previousNode;
 	var lastX, lastY, lastNodeName;
